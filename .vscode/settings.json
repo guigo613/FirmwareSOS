@@ -8,6 +8,9 @@
         "esp_eth_com.h": "c",
         "esp_eth_mac.h": "c",
         "esp_eth_phy.h": "c",
-        "esp_sleep.h": "c"
+        "esp_sleep.h": "c",
+        "rtc_io.h": "c",
+        "gpio.h": "c",
+        "input_key_service.h": "c"
     }
 }

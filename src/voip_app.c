@@ -3,14 +3,12 @@
 #include <time.h>
 #include <sys/time.h>
 #include "esp_system.h"
-#include "esp_wifi.h"
 #include "esp_log.h"
 #include "nvs_flash.h"
 #include "audio_mem.h"
 #include "soc/soc_caps.h"
 #include "esp_peripherals.h"
 #include "input_key_service.h"
-#include "wifi_service.h"
 #include "smart_config.h"
 #include "sip_service.h"
 #include "driver/rtc_io.h"
@@ -268,7 +266,7 @@ void init_network() {
         phy_config_spi.phy_addr = spi_eth_module_config[i].phy_addr;
         phy_config_spi.reset_gpio_num = spi_eth_module_config[i].phy_reset_gpio;
         
-        eth_w5500_config_t w5500_config = ETH_W5500_DEFAULT_CONFIG(&spi_devcfg);
+        eth_w5500_config_t w5500_config = ETH_W5500_DEFAULT_CONFIG(CONFIG_EXAMPLE_ETH_SPI_HOST, &spi_devcfg);
         w5500_config.int_gpio_num = spi_eth_module_config[i].int_gpio;
         mac_spi[i] = esp_eth_mac_new_w5500(&w5500_config, &mac_config_spi);
         phy_spi[i] = esp_eth_phy_new_w5500(&phy_config_spi);
